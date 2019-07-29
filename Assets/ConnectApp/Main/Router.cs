@@ -46,7 +46,7 @@ namespace ConnectApp.Main {
         public static NavigatorState navigator {
             get { return globalKey.currentState as NavigatorState; }
         }
-        
+
         public static RouteObserve<PageRoute> routeObserve {
             get { return _routeObserve; }
         }
@@ -54,6 +54,9 @@ namespace ConnectApp.Main {
         static Dictionary<string, WidgetBuilder> mainRoutes {
             get {
                 var routes = new Dictionary<string, WidgetBuilder> {
+                    {MainNavigatorRoutes.Splash, context => new SplashPage()},
+                    {MainNavigatorRoutes.Main, context => new MainScreen()},
+                    {MainNavigatorRoutes.Root, context => new RootScreen()},
                     {MainNavigatorRoutes.Search, context => new SearchScreenConnector()},
                     {MainNavigatorRoutes.ArticleDetail, context => new ArticleDetailScreenConnector("")},
                     {MainNavigatorRoutes.Setting, context => new SettingScreenConnector()},
@@ -73,21 +76,6 @@ namespace ConnectApp.Main {
                     {MainNavigatorRoutes.TeamFollower, context => new TeamFollowerScreenConnector("")},
                     {MainNavigatorRoutes.TeamMember, context => new TeamMemberScreenConnector("")}
                 };
-                if (Application.isEditor) {
-                    var isExistSplash = SplashManager.isExistSplash();
-                    if (isExistSplash) {
-                        routes.Add(MainNavigatorRoutes.Root, context => new SplashPage());
-                        routes.Add(MainNavigatorRoutes.Main, context => new MainScreen());
-                    }
-                    else {
-                        routes.Add(MainNavigatorRoutes.Root, context => new MainScreen());
-                    }
-                }
-                else {
-                    routes.Add(MainNavigatorRoutes.Splash, context => new SplashPage());
-                    routes.Add(MainNavigatorRoutes.Main, context => new MainScreen());
-                    routes.Add(MainNavigatorRoutes.Root, context => new RootScreen());
-                }
 
 
                 return routes;

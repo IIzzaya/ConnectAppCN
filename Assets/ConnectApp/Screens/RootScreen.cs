@@ -8,7 +8,13 @@ using UnityEngine;
 using Color = Unity.UIWidgets.ui.Color;
 
 namespace ConnectApp.screens {
-    public class RootScreen : StatelessWidget {
+    public class RootScreen : StatefulWidget {
+        public override State createState() {
+            return new _RootScreen();
+        }
+    }
+
+    class _RootScreen : State<RootScreen> {
         public override Widget build(BuildContext context) {
             if (Application.platform == RuntimePlatform.Android) {
                 return new Container(

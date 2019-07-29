@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Web;
 using ConnectApp.Constants;
-using ConnectApp.Main;
 using ConnectApp.redux;
 using ConnectApp.redux.actions;
 using ConnectApp.Utils;
@@ -81,22 +80,22 @@ namespace ConnectApp.Plugins {
                         }
                             break;
                         case "CompletedCallback": {
-                            var node = args[0];
-                            var dict = JSON.Parse(node);
-                            var isPush = (bool) dict["push"];
-                            if (isPush) {
-                                StoreProvider.store.dispatcher.dispatch(new MainNavigatorReplaceToAction {
-                                    routeName = MainNavigatorRoutes.Main
-                                });
-                            }
-                            else {
-                                if (SplashManager.isExistSplash()) {
-                                    StoreProvider.store.dispatcher.dispatch(new MainNavigatorPushReplaceSplashAction());
-                                }
-                                else {
-                                    StoreProvider.store.dispatcher.dispatch(new MainNavigatorPushReplaceMainAction());
-                                }
-                            }
+//                            var node = args[0];
+//                            var dict = JSON.Parse(node);
+//                            var isPush = (bool) dict["push"];
+//                            if (isPush) {
+//                                StoreProvider.store.dispatcher.dispatch(new MainNavigatorReplaceToAction {
+//                                    routeName = MainNavigatorRoutes.Main
+//                                });
+//                            }
+//                            else {
+//                                if (SplashManager.isExistSplash()) {
+//                                    StoreProvider.store.dispatcher.dispatch(new MainNavigatorPushReplaceSplashAction());
+//                                }
+//                                else {
+//                                    StoreProvider.store.dispatcher.dispatch(new MainNavigatorPushReplaceMainAction());
+//                                }
+//                            }
                         }
                             break;
                     }
